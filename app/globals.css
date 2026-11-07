@@ -1,26 +1,106 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Main logo colours only. Teal sampled from public/images/logo/logo.jpg */
+  --color-teal: #003636;
+  --color-teal-deep: #001f1f;
+  --color-teal-soft: #0c4a48;
+  --color-bone: #f1ece1;
+  --color-bone-dim: #d9d2c3;
+  --color-lime: #d6e0d5; /* highlight accent, from client-shared poster ref */
+  /* --color-lime: #d6ff50; */
+
+  --font-sans: var(--font-mona), system-ui, sans-serif;
+  --font-serif: var(--font-italiana), Georgia, serif;
+  --font-mono: var(--font-spacemono), ui-monospace, monospace;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--color-teal);
+  color: var(--color-bone);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: clip;
+  font-family: var(--font-sans);
+  background: var(--color-teal);
+  color: var(--color-bone);
+}
+
+/* Headline voice: Mona Sans stretched wide + heavy. */
+.font-wide {
+  font-family: var(--font-sans);
+  font-stretch: 125%;
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+}
+
+/* Tailwind v4 dropped the pointer cursor on buttons; restore it everywhere. */
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]) {
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--color-lime);
+  color: var(--color-teal);
+}
+
+/* Lime highlight block behind a word (poster style). */
+.hl {
+  display: inline-block;
+  background: var(--color-lime);
+  color: var(--color-teal);
+  line-height: 0.9;
+  padding: 0.04em 0.08em 0.02em;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.diamond {
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee {
+  animation: marquee 40s linear infinite;
+}
+
+.editorial-link {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition:
+    color 240ms ease,
+    background-color 240ms ease;
+}
+
+.editorial-link:hover {
+  background: var(--color-teal);
+  color: var(--color-bone);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    animation: none;
+  }
 }

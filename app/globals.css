@@ -11,7 +11,7 @@
   /* --color-lime: #d6ff50; */
 
   --font-sans: var(--font-mona), system-ui, sans-serif;
-  --font-serif: var(--font-italiana), Georgia, serif;
+  --font-serif: var(--font-arizonia), cursive;
   --font-mono: var(--font-spacemono), ui-monospace, monospace;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);

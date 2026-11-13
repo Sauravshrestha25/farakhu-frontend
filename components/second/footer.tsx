@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { LogoMark } from "../logo-mark";
+import { instagramIcon, phoneIcon, locationIcon } from "../ui/footer-icons";
 import { scrollToAnchor } from "../nav";
 import { WebxLogoSparkles } from "../ui/webx-logo-sparkles";
 import { apparelDrop, divisions, site, visit } from "@/content/site";
@@ -139,25 +140,29 @@ export function Footer() {
       </div>
 
       {/* Columns */}
-      <div className="relative grid grid-cols-2 gap-10 py-16 lg:grid-cols-4 lg:gap-8">
+      <div className="relative z-[1] grid grid-cols-2 gap-10 py-16 lg:grid-cols-4 lg:gap-8">
         <Col title="Visit">
           {visit.lines.map((l) => (
             <span key={l}>{l}</span>
           ))}
-          <a className={`${linkCls} mt-2 text-bone`} href={site.phoneHref}>
+          <a className={`${linkCls} mt-2 inline-flex items-center gap-2 text-bone`} href={site.phoneHref}>
+            {phoneIcon}
             {site.phone}
           </a>
-          <a className={`${linkCls} text-bone`} href={visit.directions} target="_blank" rel="noreferrer">
+          <a className={`${linkCls} inline-flex items-center gap-2 text-bone`} href={visit.directions} target="_blank" rel="noreferrer">
+            {locationIcon}
             Get directions ↗
           </a>
         </Col>
         <Col title="Follow">
-          <a className={linkCls} href={site.instagram} target="_blank" rel="noreferrer">
-            @farakchu
+          <a className={`${linkCls} inline-flex items-center gap-2`} href={site.instagram} target="_blank" rel="noreferrer">
+            {instagramIcon}
+            farakchu
           </a>
           {divisions.map((d) => (
-            <a key={d.id} className={linkCls} href={d.href} target="_blank" rel="noreferrer">
-              {d.handle}
+            <a key={d.id} className={`${linkCls} inline-flex items-center gap-2`} href={d.href} target="_blank" rel="noreferrer">
+              {instagramIcon}
+              {d.handle.replace(/^@/, "")}
             </a>
           ))}
         </Col>

@@ -100,14 +100,10 @@ export function Nav() {
           onClick={() => setOpen((o) => !o)}
           aria-expanded={open}
           aria-controls="fc-menu"
-          className="group flex items-center gap-3 rounded-full bg-lime py-2.5 pl-5 pr-4 font-wide text-[0.6875rem] text-teal transition-transform duration-300 hover:scale-105"
+          className="group flex min-h-11 items-center justify-center gap-3 rounded-[50%] bg-lime px-8 py-3 font-wide text-[0.625rem] leading-none text-teal transition-colors hover:bg-bone focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lime"
         >
-          {/* Both labels share one grid cell, so the pill fits the wider word. */}
-          <span className="grid h-4 overflow-hidden">
-            <span className={`[grid-area:1/1] transition-transform duration-500 ease-out-expo ${open ? "-translate-y-full" : ""}`}>Menu</span>
-            <span className={`[grid-area:1/1] transition-transform duration-500 ease-out-expo ${open ? "" : "translate-y-full"}`}>Close</span>
-          </span>
-          <span className="relative block size-3">
+          <span>{open ? "Close" : "Menu"}</span>
+          <span aria-hidden="true" className="relative block size-3 shrink-0">
             <span className={`absolute left-0 top-1/2 h-0.5 w-full -translate-y-1/2 bg-teal transition-transform duration-500 ease-out-expo ${open ? "rotate-45" : ""}`} />
             <span className={`absolute left-0 top-1/2 h-0.5 w-full -translate-y-1/2 bg-teal transition-transform duration-500 ease-out-expo ${open ? "-rotate-45" : "rotate-90"}`} />
           </span>

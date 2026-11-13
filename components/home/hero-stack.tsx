@@ -225,7 +225,17 @@ export function HeroStack() {
 
       {/* Layer 1: hero -> diamond -> About */}
       <section className="hs-hero relative z-[1] h-svh overflow-hidden bg-teal [grid-area:1/1]">
-        <Image src={home.hero.image.src} alt={home.hero.image.alt} fill priority sizes="100vw" className="hs-bg object-contain" />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={home.hero.image.src}
+          aria-hidden="true"
+          className="hs-bg absolute inset-0 h-full w-full object-cover"
+        >
+          <source src="/videos/hero_video" type="video/mp4" />
+        </video>
 
         <div id="about" className="hs-about-bg absolute inset-0 z-[1] opacity-0">
           <div className="hs-about-photo absolute inset-0">
